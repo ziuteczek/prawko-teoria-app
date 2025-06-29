@@ -11,7 +11,7 @@ async function getUserQuestions(
   if (excludedQuestionsID) {
     requestURL.searchParams.set("exclude", JSON.stringify(excludedQuestionsID));
   }
-  console.log(requestURL)
+  
   try {
     const userStatsReq = await fetch(requestURL, {
       credentials: "include",

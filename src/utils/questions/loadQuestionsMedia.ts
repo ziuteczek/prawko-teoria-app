@@ -1,11 +1,14 @@
 import getMedia from "../../api/getMedia";
 
-const loadQuestions = (questions: question[]) => {
+const loadQuestionsMedia = (questions: question[]) => {
   const questionsLoaded: questionLoad[] = questions.map((question) => ({
     ...question,
     mediaBlob: question.media ? getMedia(question.media) : null,
     isLoaded: !question.media,
   }));
+  questionsLoaded.forEach((question) =>
+    question.mediaBlob?.then(() => (question.isLoaded = true))
+  );
   return questionsLoaded;
 };
-export default loadQuestions;
+export default loadQuestionsMedia;

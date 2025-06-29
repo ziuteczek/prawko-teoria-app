@@ -14,19 +14,19 @@ interface question {
   media: string | null;
   mediaID: string | null;
 }
-interface questionLoad extends question {
+interface questionMediaPromise extends question {
   mediaBlob: Promise<Blob | null> | null;
   isLoaded: boolean;
 }
-interface questionWithLoadedMedia extends questionLoad {
-  mediaBlob: Blob | null;
+interface questionMediaBlob extends questionMediaPromise {
+  mediaBlob: Blob;
 }
-enum questionsLoadingPhases {
-  empty,
-  taken,
+interface currQuestionObjWithLoadedMedia extends questionWithLoadedMedia {
+  mediaBlobURL: string;
 }
 interface questionNoMedia extends questionLoad {
-  media: null,
-  mediaID: null
-  mediaBlob: null,
+  media: null;
+  mediaID: null;
+  mediaBlob: null;
 }
+

@@ -1,8 +1,11 @@
 const getPreloadedQuestions = () => {
   try {
-    const preloadedQuestions: question[] = JSON.parse(sessionStorage.preload);
-    // sessionStorage.removeItem("preload");
-    console.log(preloadedQuestions)
+    const preloadQuestionsStr = sessionStorage.getItem("preload");
+    if (typeof preloadQuestionsStr !== "string") {
+      return [];
+    }
+    const preloadedQuestions: question[] = JSON.parse(preloadQuestionsStr);
+
     return preloadedQuestions;
   } catch (err) {
     // sessionStorage.removeItem("preload");
