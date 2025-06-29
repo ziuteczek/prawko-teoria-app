@@ -3,7 +3,7 @@ interface userStats {
   size: number;
   category: string;
   known: number;
-  unkown: number;
+  unknown: number;
   undiscovered: number;
 }
 interface question {
@@ -15,14 +15,18 @@ interface question {
   mediaID: string | null;
 }
 interface questionLoad extends question {
-  mediaBlob: Promise<Blob | undefined> | null | undefined | Blob;
+  mediaBlob: Promise<Blob | null> | null;
+  isLoaded: boolean;
 }
-interface questionWithMedia extends questionLoad {
-  media: string;
-  mediaID: string;
-  mediaBlob: Promise<Blob | undefined> | undefined | Blob;
+interface questionWithLoadedMedia extends questionLoad {
+  mediaBlob: Blob | null;
 }
 enum questionsLoadingPhases {
   empty,
   taken,
+}
+interface questionNoMedia extends questionLoad {
+  media: null,
+  mediaID: null
+  mediaBlob: null,
 }

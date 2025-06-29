@@ -17,6 +17,7 @@ async function getUserQuestions(
       credentials: "include",
     });
     const userStats: question[] = await userStatsReq.json();
+    console.log(userStats)
     return userStats;
   } catch (err) {
     console.error(err);

@@ -5,7 +5,6 @@ import getUserQuestions from "../api/getUserQuestions";
 
 function CategoryUserStat({ categoryStats }: { categoryStats: userStats }) {
   const { ref, inView } = useInView({
-    threshold: 0.1,
     triggerOnce: true,
   });
 
@@ -21,16 +20,17 @@ function CategoryUserStat({ categoryStats }: { categoryStats: userStats }) {
         3,
         ["undiscovered"]
       );
+      console.log(questionsContent.current);
     })();
   }, [inView]);
   return (
     <div key={categoryStats.category} ref={ref}>
       <h3>{categoryStats.category}</h3>
       <p>Znane {categoryStats.known}</p>
-      <p>Nieznane {categoryStats.unkown}</p>
+      <p>Nieznane {categoryStats.unknown}</p>
       <p>
         Nieodkryte{" "}
-        {categoryStats.size - categoryStats.known - categoryStats.unkown}
+        {categoryStats.size - categoryStats.known - categoryStats.unknown}
       </p>
       <p>Liczba pytań {categoryStats.size}</p>
       <Link

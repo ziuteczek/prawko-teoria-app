@@ -1,4 +1,4 @@
-async function getMedia(name: string): Promise<Blob | undefined> {
+async function getMedia(name: string): Promise<Blob | null> {
   try {
     const mediaReq = await fetch(
       `https://storage.googleapis.com/prawko-teoria-vid/visualisations2/${encodeURI(
@@ -12,7 +12,7 @@ async function getMedia(name: string): Promise<Blob | undefined> {
     return media;
   } catch (err) {
     console.error(err);
-    return undefined;
+    return null;
   }
 }
 export default getMedia;
