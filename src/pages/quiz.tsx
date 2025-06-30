@@ -59,6 +59,8 @@ function Quiz() {
         <video
           src={URL.createObjectURL(currQuestion.mediaBlob as Blob)}
         ></video>
+      ) : currQuestion.media?.endsWith(".jpg") ? (
+        <img src={URL.createObjectURL(currQuestion.mediaBlob as Blob)} alt="" />
       ) : (
         <></>
       )}
